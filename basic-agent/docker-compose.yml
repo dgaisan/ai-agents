@@ -1,0 +1,15 @@
+services:
+  ollama:
+    image: ollama/ollama
+    ports:
+      - "11435:11434"
+  
+  agent-service:
+    build: ./agent-service
+    depends_on:
+      - ollama
+  
+  # redis:
+    #image: redis:latest
+    #ports:
+      #- "6379:6379"
