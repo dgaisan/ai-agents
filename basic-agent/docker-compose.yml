@@ -1,15 +1,24 @@
 services:
   ollama:
-    image: ollama/ollama
+    build: ./ollama-service
     ports:
       - "11435:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+    entrypoint: >
+      sh -c "ollama serve & sleep 5 && ollama pull llama3 && wait"
+
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:11434"]
+      interval: 10s
+      retries: 10
+      start_period: 5s
   
   agent-service:
     build: ./agent-service
     depends_on:
-      - ollama
-  
-  # redis:
-    #image: redis:latest
-    #ports:
-      #- "6379:6379"
+      ollama:
+        condition: service_healthy
+
+volumes:
+  ollama_data:
