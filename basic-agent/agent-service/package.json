@@ -2,9 +2,11 @@
   "name": "ollama-agent",
   "version": "1.0.0",
   "description": "",
-  "type": "module",
+  "main": "dist/main.js",
   "scripts": {
-    "start": "ts-node main.ts"
+    "start": "node dist/main.js",
+    "build": "tsc",
+    "dev": "ts-node-dev src/main.ts"
   },
 
   "dependencies": {
