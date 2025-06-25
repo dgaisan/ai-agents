@@ -5,7 +5,7 @@ export class Agent {
     private persona: string;
     private apiUrl: string;
 
-    constructor(name: string, persona: string, apiUrl = 'http://ollama:11435/api/generate') {
+    constructor(name: string, persona: string, apiUrl = 'http://ollama:11434/api/generate') {
         this.name = name;
         this.persona = persona;
         this.apiUrl = apiUrl;

@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { Agent } from './agent.js';
 
 const agent1 = new Agent("Agent Maia Sandu", "A president of Republic of Moldova that's trying to take the county to European Union");
@@ -13,4 +14,13 @@ async function debate() {
     }
 }
 
-debate();
+(async function main() {
+    console.log("Starting debate simulation...");
+    try {
+        await debate();
+    } catch (error) {
+        console.error("An error occurred:", error);
+    }
+})();
+
+
